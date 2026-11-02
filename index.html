@@ -8,25 +8,61 @@
     <link rel="manifest" href="manifest.webmanifest">
     <meta name="theme-color" content="#0d6efd">
     <style>
-        body { background-color: #f8f9fa; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        .navbar-brand { font-weight: 700; letter-spacing: 1px; }
-        .subject-btn { font-weight: 600; border-radius: 20px; padding: 6px 16px; margin: 3px; }
-        .subject-btn.active { background-color: #0d6efd; color: white; }
-        .option-btn { text-align: left; padding: 12px 18px; border: 1px solid #dee2e6; background: #ffffff; border-radius: 10px; transition: all 0.2s; font-size: 1.05rem; }
-        .option-btn:hover:not([disabled]) { background: #e9ecef; border-color: #adb5bd; }
-        .option-btn.correct { background-color: #d1e7dd; border-color: #0f5132; color: #0f5132; font-weight: 600; }
-        .option-btn.incorrect { background-color: #f8d7da; border-color: #842029; color: #842029; }
-        .explanation-box { background-color: #e7f1ff; border-left: 5px solid #0d6efd; line-height: 1.6; }
+        body { background-color: #f4f6f9; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+        .navbar-brand { font-weight: 700; letter-spacing: 0.5px; }
+        .subject-btn { font-weight: 600; border-radius: 20px; padding: 8px 18px; margin: 4px; transition: all 0.2s; }
+        .subject-btn.active { background-color: #0d6efd; color: white; box-shadow: 0 4px 10px rgba(13, 110, 253, 0.3); }
+        .option-btn { padding: 14px 20px; border: 1px solid #dee2e6; background: #ffffff; border-radius: 12px; transition: all 0.2s; font-size: 1.05rem; cursor: pointer; }
+        .option-btn:hover { background: #f0f4f8; border-color: #0d6efd; }
+        .option-btn.correct { background-color: #d1e7dd !important; border-color: #0f5132 !important; color: #0f5132; font-weight: 600; }
+        .option-btn.incorrect { background-color: #f8d7da !important; border-color: #842029 !important; color: #842029; }
+        .explanation-box { background-color: #ffffff; border: 1px solid #cff4fc; border-left: 5px solid #0dcaf0; line-height: 1.6; }
+        .ent-banner { background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%); color: white; border-radius: 16px; padding: 20px; }
+        
+        /* Floating Toolbar for Tools (Calculator, Periodic Table, Solubility Table) */
+        .tools-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 15px; }
+        .calc-box { max-width: 260px; background: #343a40; color: white; border-radius: 12px; padding: 15px; position: fixed; bottom: 20px; right: 20px; z-index: 1050; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
+        .calc-btn { width: 22%; height: 42px; margin: 1%; font-weight: bold; border-radius: 8px; }
     </style>
 </head>
 <body>
     <nav class="navbar navbar-dark bg-primary shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="#">🚀 ВЕКТОР — ЕНТ 2026</a>
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+                🚀 ВЕКТОР — ЕНТ 2026
+            </a>
+            <span class="badge bg-light text-primary fw-bold fs-6">Спецификация НЦТ РК</span>
         </div>
     </nav>
 
     <div class="container my-4">
+        <!-- ЕНТ Инфо-Баннер -->
+        <div class="ent-banner shadow-sm mb-3">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h4 class="fw-bold mb-1">Официальный формат ЕНТ-2026</h4>
+                    <p class="mb-0 opacity-90">120 вопросов | 140 баллов | 240 минут. В базе сейчас <span id="total-q-count" class="badge bg-warning text-dark fs-6">17</span> реальных тестовых заданий НЦТ с детализацией.</p>
+                </div>
+                <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                    <span class="badge bg-white text-dark p-2">Комбинация: Хим-Био</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Инструменты тестируемого (Калькулятор, Менделеев, Растворимость) -->
+        <div class="tools-bar justify-content-end">
+            <button class="btn btn-sm btn-dark d-flex align-items-center gap-1" onclick="toggleCalculator()">
+                🧮 Калькулятор
+            </button>
+            <button class="btn btn-sm btn-outline-dark d-flex align-items-center gap-1" data-bs-toggle="modal" data-bs-target="#mendeleevModal">
+                🧪 Таблица Менделеева
+            </button>
+            <button class="btn btn-sm btn-outline-dark d-flex align-items-center gap-1" data-bs-toggle="modal" data-bs-target="#solubilityModal">
+                💧 Таблица растворимости
+            </button>
+        </div>
+
+        <!-- Переключатели предметов -->
         <div class="subject-selector d-flex flex-wrap justify-content-center mb-4">
             <button class="btn btn-outline-primary subject-btn active" data-subject="biology">🧬 Биология</button>
             <button class="btn btn-outline-primary subject-btn" data-subject="chemistry">🧪 Химия</button>
@@ -36,11 +72,93 @@
         </div>
 
         <div id="quiz-container">
+            <!-- Questions generated via app.js -->
         </div>
     </div>
 
+    <!-- Всплывающий калькулятор -->
+    <div id="calculator-widget" class="calc-box d-none shadow">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="fw-bold fs-6">Калькулятор</span>
+            <button class="btn-close btn-close-white btn-sm" onclick="toggleCalculator()"></button>
+        </div>
+        <input type="text" id="calc-display" class="form-control mb-2 text-end fs-5 fw-bold" readonly value="">
+        <div class="d-flex flex-wrap justify-content-between">
+            <button class="btn btn-secondary calc-btn" onclick="calcAppend('7')">7</button>
+            <button class="btn btn-secondary calc-btn" onclick="calcAppend('8')">8</button>
+            <button class="btn btn-secondary calc-btn" onclick="calcAppend('9')">9</button>
+            <button class="btn btn-warning calc-btn" onclick="calcAppend('/')">÷</button>
+            <button class="btn btn-secondary calc-btn" onclick="calcAppend('4')">4</button>
+            <button class="btn btn-secondary calc-btn" onclick="calcAppend('5')">5</button>
+            <button class="btn btn-secondary calc-btn" onclick="calcAppend('6')">6</button>
+            <button class="btn btn-warning calc-btn" onclick="calcAppend('*')">×</button>
+            <button class="btn btn-secondary calc-btn" onclick="calcAppend('1')">1</button>
+            <button class="btn btn-secondary calc-btn" onclick="calcAppend('2')">2</button>
+            <button class="btn btn-secondary calc-btn" onclick="calcAppend('3')">3</button>
+            <button class="btn btn-warning calc-btn" onclick="calcAppend('-')">-</button>
+            <button class="btn btn-danger calc-btn" onclick="calcClear()">C</button>
+            <button class="btn btn-secondary calc-btn" onclick="calcAppend('0')">0</button>
+            <button class="btn btn-secondary calc-btn" onclick="calcAppend('.')">.</button>
+            <button class="btn btn-success calc-btn" onclick="calcCalculate()">=</button>
+        </div>
+    </div>
+
+    <!-- Модальное окно: Таблица Менделеева -->
+    <div class="modal fade" id="mendeleevModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title">🧪 Периодическая система химических элементов (НЦТ РК)</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center overflow-auto">
+                    <table class="table table-bordered table-sm fs-7">
+                        <tr class="table-dark">
+                            <th>Период</th><th>I</th><th>II</th><th>III</th><th>IV</th><th>V</th><th>VI</th><th>VII</th><th>VIII</th>
+                        </tr>
+                        <tr><td><b>1</b></td><td class="table-info">H (1)</td><td colspan="6"></td><td class="table-warning">He (4)</td></tr>
+                        <tr><td><b>2</b></td><td class="table-danger">Li (7)</td><td class="table-danger">Be (9)</td><td class="table-info">B (11)</td><td class="table-info">C (12)</td><td class="table-info">N (14)</td><td class="table-info">O (16)</td><td class="table-info">F (19)</td><td class="table-warning">Ne (20)</td></tr>
+                        <tr><td><b>3</b></td><td class="table-danger">Na (23)</td><td class="table-danger">Mg (24)</td><td class="table-info">Al (27)</td><td class="table-info">Si (28)</td><td class="table-info">P (31)</td><td class="table-info">S (32)</td><td class="table-info">Cl (35.5)</td><td class="table-warning">Ar (40)</td></tr>
+                        <tr><td><b>4</b></td><td class="table-danger">K (39)</td><td class="table-danger">Ca (40)</td><td class="table-secondary">Sc (45)</td><td class="table-secondary">Ti (48)</td><td class="table-secondary">V (51)</td><td class="table-secondary">Cr (52)</td><td class="table-secondary">Mn (55)</td><td class="table-secondary">Fe (56)</td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно: Таблица растворимости -->
+    <div class="modal fade" id="solubilityModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-white">
+                    <h5 class="modal-title">💧 Таблица растворимости кислот, оснований и солей в воде</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center overflow-auto">
+                    <table class="table table-bordered table-sm fs-7">
+                        <thead class="table-light">
+                            <tr><th>Ионы</th><th>H⁺</th><th>Na⁺</th><th>K⁺</th><th>Ba²⁺</th><th>Ca²⁺</th><th>Cu²⁺</th><th>Fe²⁺</th><th>Ag⁺</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><th>OH⁻</th><td>H₂O</td><td class="text-success fw-bold">Р</td><td class="text-success fw-bold">Р</td><td class="text-success fw-bold">Р</td><td class="text-warning fw-bold">М</td><td class="text-danger fw-bold">Н</td><td class="text-danger fw-bold">Н</td><td>-</td></tr>
+                            <tr><th>Cl⁻</th><td class="text-success fw-bold">Р</td><td class="text-success fw-bold">Р</td><td class="text-success fw-bold">Р</td><td class="text-success fw-bold">Р</td><td class="text-success fw-bold">Р</td><td class="text-success fw-bold">Р</td><td class="text-success fw-bold">Р</td><td class="text-danger fw-bold">Н</td></tr>
+                            <tr><th>NO₃⁻</th><td class="text-success fw-bold">Р</td><td class="text-success fw-bold">Р</td><td class="text-success fw-bold">Р</td><td class="text-success fw-bold">Р</td><td class="text-success fw-bold">Р</td><td class="text-success fw-bold">Р</td><td class="text-success fw-bold">Р</td><td class="text-success fw-bold">Р</td></tr>
+                            <tr><th>SO₄²⁻</th><td class="text-success fw-bold">Р</td><td class="text-success fw-bold">Р</td><td class="text-success fw-bold">Р</td><td class="text-danger fw-bold">Н</td><td class="text-warning fw-bold">М</td><td class="text-success fw-bold">Р</td><td class="text-success fw-bold">Р</td><td class="text-warning fw-bold">М</td></tr>
+                        </tbody>
+                    </table>
+                    <p class="text-muted fs-7 mb-0"><b>Р</b> — растворимо, <b>М</b> — малорастворимо, <b>Н</b> — нерастворимо (осадок).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="app.js"></script>
     <script>
+        function toggleCalculator() {
+            const calc = document.getElementById('calculator-widget');
+            calc.classList.toggle('d-none');
+        }
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('sw.js');
         }
