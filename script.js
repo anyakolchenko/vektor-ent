@@ -1,51 +1,49 @@
-// База данных предметов и вопросов (более 1000 заданий в каждом)
+// База данных предметов
 const subjectsData = {
     math_lit: {
         id: "math_lit",
         title: "Математическая грамотность",
         count: "1200+ заданий в базе",
-        questions: generateMockQuestions("Математическая грамотность", 1200)
+        questions: []
     },
     russian: {
         id: "russian",
         title: "Русский язык",
         count: "1150 заданий в базе",
-        questions: generateMockQuestions("Русский язык", 1150)
+        questions: []
     },
     biology: {
         id: "biology",
         title: "Биология",
         count: "1300 заданий в базе",
-        questions: generateMockQuestions("Биология", 1300)
+        questions: []
     },
     chemistry: {
         id: "chemistry",
         title: "Химия",
         count: "1100 заданий в базе",
-        questions: generateMockQuestions("Химия", 1100)
+        questions: []
     }
 };
 
-// Функция-генератор для наполнения объемной базы (симуляция полной базы ЕНТ)
-function generateMockQuestions(subjectName, totalCount) {
-    let arr = [];
-    for (let i = 1; i <= totalCount; i++) {
-        arr.push({
-            id: `${subjectName}_${i}`,
-            text: `Вопрос №${i} по дисциплине ${subjectName}. Выберите правильный вариант ответа из предложенных ниже.`,
-            options: [
-                "Вариант ответа A (верный)",
-                "Вариант ответа B",
-                "Вариант ответа C",
-                "Вариант ответа D"
-            ],
+// Заполняем базу вопросами для каждого предмета
+Object.keys(subjectsData).forEach(key => {
+    let subj = subjectsData[key];
+    let targetCount = key === 'math_lit' ? 1200 : key === 'russian' ? 1150 : key === 'biology' ? 1300 : 1100;
+    
+    for (let i = 1; i <= targetCount; i++) {
+        subj.questions.push({
+            id: `${key}_${i}`,
+            text: `Задание №${i} по предмету "${subj.title}". Выберите правильный ответ из вариантов ниже:`,
+            options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г"],
             correct: 0
         });
     }
-    return arr;
-}
+});
 
-// Рендер карточек на главной странице
+// Сохраняем актуальную базу в глобальный объект window для других страниц (тренировки/пробника)
+window.subjectsData = subjectsData;
+
 document.addEventListener("DOMContentLoaded", () => {
     const grid = document.getElementById("subjects-grid");
     if (grid) {
@@ -54,13 +52,18 @@ document.addEventListener("DOMContentLoaded", () => {
             const subj = subjectsData[key];
             const card = document.createElement("div");
             card.className = "subject-card";
+            card.style.cursor = "pointer";
+            card.style.background = "#1e293b";
+            card.style.padding = "16px";
+            card.style.borderRadius = "12px";
+            card.style.marginBottom = "12px";
+            card.style.border = "1px solid #334155";
             card.innerHTML = `
-                <div class="subject-num">0${index + 1} / ПРЕДМЕТ</div>
-                <h3>${subj.title}</h3>
-                <p>${subj.count}</p>
+                <div class="subject-num" style="font-size: 12px; color: #94a3b8; font-weight: bold;">0${index + 1} / ПРЕДМЕТ</div>
+                <h3 style="color: #f8fafc; margin: 6px 0; font-size: 18px;">${subj.title}</h3>
+                <p style="color: #38bdf8; font-size: 14px; margin: 0;">${subj.count}</p>
             `;
             card.addEventListener("click", () => {
-                // Переход к тренировке по конкретному предмету без ограничения в 5 вопросов
                 localStorage.setItem("active_subject", key);
                 window.location.href = "training.html";
             });
@@ -68,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Загрузка общей статистики
+    // Отображение сохраненной статистики без удаления
     const answeredEl = document.getElementById("total-answered");
     const correctEl = document.getElementById("total-correct");
     if (answeredEl && correctEl) {
