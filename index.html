@@ -1,46 +1,49 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#101827">
-<meta name="description" content="Вектор — тренажёр подготовки к ЕНТ">
-<link rel="manifest" href="manifest.webmanifest">
-<title>Вектор — подготовка к ЕНТ</title>
-<style>
-:root{--bg:#0b1220;--panel:#131e30;--panel2:#1a2940;--text:#edf3ff;--muted:#9aabc4;--accent:#6ee7c2;--blue:#75a7ff;--bad:#ff8290;--good:#69dfaa;--line:#293b56}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(1000px 500px at 80% -10%,#203958 0%,transparent 60%),var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
-button,select{font:inherit}button{cursor:pointer;border:0;border-radius:14px;padding:13px 16px;background:var(--accent);color:#092018;font-weight:750}
-button.secondary{background:var(--panel2);color:var(--text);border:1px solid var(--line)}button.ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}button:disabled{opacity:.45;cursor:not-allowed}
-header{position:sticky;top:0;z-index:5;background:#0b1220eF;backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:12px max(16px,env(safe-area-inset-right)) 12px max(16px,env(safe-area-inset-left));display:flex;align-items:center;justify-content:space-between}
-.brand{display:flex;gap:10px;align-items:center;font-weight:900;letter-spacing:.3px}.logo{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--blue));display:grid;place-items:center;color:#081421;font-weight:1000}
-main{max-width:760px;margin:auto;padding:18px 15px calc(90px + env(safe-area-inset-bottom))}
-h1{font-size:28px;line-height:1.15;margin:10px 0}h2{font-size:21px;margin:0 0 12px}h3{font-size:17px;margin:0 0 7px}
-p{margin:8px 0}.muted{color:var(--muted)}.small{font-size:13px;color:var(--muted)}
-.card{background:linear-gradient(145deg,var(--panel),#111b2b);border:1px solid var(--line);border-radius:20px;padding:17px;margin:12px 0;box-shadow:0 12px 30px #0002}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.subject{min-height:112px;text-align:left;background:var(--panel);color:var(--text);border:1px solid var(--line);padding:14px;border-radius:17px}.subject b{display:block;font-size:15px;margin:6px 0}.subject span{font-size:12px;color:var(--muted)}
-.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}.actions button{flex:1;min-width:130px}
-.topline{display:flex;justify-content:space-between;align-items:center;gap:10px}.pill{border:1px solid var(--line);border-radius:99px;padding:5px 10px;color:var(--muted);font-size:12px}
-.progress{height:7px;background:#26364e;border-radius:9px;overflow:hidden;margin:12px 0}.progress>i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--blue));width:0}
-.option{display:flex;gap:10px;align-items:flex-start;padding:13px;border:1px solid var(--line);border-radius:13px;margin:8px 0;background:#17243a;color:var(--text);text-align:left;width:100%;font-weight:500}
-.option.selected{border-color:var(--blue);background:#203653}.option.correct{border-color:var(--good)}.option.wrong{border-color:var(--bad)}
-textarea{width:100%;min-height:100px;border:1px solid var(--line);border-radius:13px;background:#0e1929;color:var(--text);padding:12px;font:inherit}
-.notice{padding:12px;border-radius:13px;background:#172b39;border:1px solid #315c59;margin:10px 0}.explain{white-space:pre-wrap;color:#d6e3f6}
-nav{position:fixed;bottom:0;left:0;right:0;z-index:6;display:flex;justify-content:space-around;background:#0c1524f2;border-top:1px solid var(--line);padding:9px 5px calc(9px + env(safe-area-inset-bottom));backdrop-filter:blur(14px)}
-nav button{background:transparent;color:var(--muted);padding:7px 9px;font-size:12px;min-width:0}nav button.active{color:var(--accent)}
-select{width:100%;background:#0e1929;color:var(--text);border:1px solid var(--line);padding:12px;border-radius:12px;margin:5px 0 12px}
-.hidden{display:none!important}.big{font-size:30px;font-weight:900}.stat{font-size:24px;font-weight:850}.timer{font-variant-numeric:tabular-nums;font-weight:900;color:var(--accent)}
-@media(min-width:600px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}main{padding-top:26px}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ВЕКТОР — Тренажер ЕНТ-2026</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="manifest" href="manifest.webmanifest">
+    <meta name="theme-color" content="#0d6efd">
+    <style>
+        body { background-color: #f8f9fa; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .navbar-brand { font-weight: 700; letter-spacing: 1px; }
+        .subject-btn { font-weight: 600; border-radius: 20px; padding: 6px 16px; margin: 3px; }
+        .subject-btn.active { background-color: #0d6efd; color: white; }
+        .option-btn { text-align: left; padding: 12px 18px; border: 1px solid #dee2e6; background: #ffffff; border-radius: 10px; transition: all 0.2s; font-size: 1.05rem; }
+        .option-btn:hover:not([disabled]) { background: #e9ecef; border-color: #adb5bd; }
+        .option-btn.correct { background-color: #d1e7dd; border-color: #0f5132; color: #0f5132; font-weight: 600; }
+        .option-btn.incorrect { background-color: #f8d7da; border-color: #842029; color: #842029; }
+        .explanation-box { background-color: #e7f1ff; border-left: 5px solid #0d6efd; line-height: 1.6; }
+    </style>
 </head>
 <body>
-<header><div class="brand"><div class="logo">В</div><span>ВЕКТОР <span class="small">/ ЕНТ</span></span></div><span class="pill" id="saveStatus">● прогресс сохраняется</span></header>
-<main id="app"></main>
-<nav>
-<button data-tab="home" class="active">⌂<br>Главная</button>
-<button data-tab="practice">▤<br>Тренировка</button>
-<button data-tab="exam">◷<br>Пробник</button>
-<button data-tab="stats">▥<br>Прогресс</button>
-</nav>
-<script src="app.js"></script>
-</body></html>
+    <nav class="navbar navbar-dark bg-primary shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#">🚀 ВЕКТОР — ЕНТ 2026</a>
+        </div>
+    </nav>
+
+    <div class="container my-4">
+        <div class="subject-selector d-flex flex-wrap justify-content-center mb-4">
+            <button class="btn btn-outline-primary subject-btn active" data-subject="biology">🧬 Биология</button>
+            <button class="btn btn-outline-primary subject-btn" data-subject="chemistry">🧪 Химия</button>
+            <button class="btn btn-outline-primary subject-btn" data-subject="history_kz">🇰🇿 История Казахстана</button>
+            <button class="btn btn-outline-primary subject-btn" data-subject="math_lit">📐 Мат. грамотность</button>
+            <button class="btn btn-outline-primary subject-btn" data-subject="reading_lit">📖 Грамотность чтения</button>
+        </div>
+
+        <div id="quiz-container">
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+        }
+    </script>
+</body>
+</html>

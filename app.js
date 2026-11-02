@@ -1,27 +1,268 @@
-const BANK = [{"id": 1, "subject": "Математика", "topic": "Алгебра", "type": "single", "q": "Решите уравнение: 3(2x − 1) = 15", "options": ["2", "3", "4", "6"], "answer": 1, "explanation": "Раскроем скобки: 6x − 3 = 15. Перенесём −3 вправо: 6x = 18. Разделим обе части на 6: x = 3.", "hint": "Сначала раскройте скобки, затем перенесите свободный член."}, {"id": 2, "subject": "Математика", "topic": "Проценты", "type": "single", "q": "Цена товара после скидки 20% составляет 12 000 тг. Какова первоначальная цена?", "options": ["14 000 тг", "15 000 тг", "16 000 тг", "18 000 тг"], "answer": 1, "explanation": "После скидки осталось 80% цены. Пусть исходная цена P. Тогда 0,8P = 12 000, откуда P = 12 000 / 0,8 = 15 000 тг.", "hint": "Скидка 20% означает, что новая цена — 80% исходной."}, {"id": 3, "subject": "Математика", "topic": "Геометрия", "type": "single", "q": "Площадь прямоугольного треугольника с катетами 6 см и 8 см равна…", "options": ["14 см²", "24 см²", "48 см²", "28 см²"], "answer": 1, "explanation": "Площадь прямоугольного треугольника: S = ab/2. Подставляем: 6·8/2 = 24 см².", "hint": "Вспомните формулу площади треугольника и учтите прямой угол."}, {"id": 4, "subject": "Математика", "topic": "Функции", "type": "single", "q": "Найдите значение f(−2), если f(x)=x²−3x+1.", "options": ["3", "7", "11", "15"], "answer": 3, "explanation": "Подставляем x=−2: (−2)² − 3(−2) + 1 = 4 + 6 + 1 = 11. Правильный ответ — 11.", "hint": "Отрицательное число в квадрате становится положительным; минус перед 3x тоже важен."}, {"id": 5, "subject": "Математика", "topic": "Вероятность", "type": "single", "q": "В коробке 3 красных и 2 синих шара. Вероятность вынуть синий шар равна…", "options": ["1/5", "2/5", "3/5", "1/2"], "answer": 1, "explanation": "Всего 5 шаров, благоприятных исходов 2. Вероятность = 2/5.", "hint": "Вероятность — число подходящих исходов, делённое на число всех равновозможных исходов."}, {"id": 6, "subject": "Русский язык", "topic": "Орфография", "type": "single", "q": "В каком слове на месте пропуска пишется НН?", "options": ["ветре..ый день", "ю..ый художник", "стекля..ый сосуд", "румя..ый"], "answer": 2, "explanation": "«Стеклянный» — одно из слов-исключений с НН (стеклянный, оловянный, деревянный). В остальных приведённых словах пишется одна Н.", "hint": "Вспомните три прилагательных-исключения: стеклянный, оловянный, деревянный."}, {"id": 7, "subject": "Русский язык", "topic": "Пунктуация", "type": "single", "q": "Укажите предложение, в котором перед «что» нужна запятая.", "options": ["Я знаю что ты придёшь.", "Что посеешь то и пожнёшь.", "Он сказал что устал.", "Все варианты требуют запятой."], "answer": 3, "explanation": "Во всех трёх предложениях «что» вводит придаточную часть или входит в конструкцию сложного предложения. Поэтому перед ним ставится запятая.", "hint": "Проверьте, где заканчивается главная часть и начинается придаточная."}, {"id": 8, "subject": "Русский язык", "topic": "Лексика", "type": "single", "q": "Выберите антоним к слову «лаконичный».", "options": ["краткий", "сжатый", "многословный", "точный"], "answer": 2, "explanation": "Лаконичный — краткий, немногословный. Противоположное по значению слово — многословный.", "hint": "Ищите слово с противоположным, а не близким значением."}, {"id": 9, "subject": "Русский язык", "topic": "Морфология", "type": "single", "q": "В каком варианте все слова — наречия?", "options": ["быстро, вчера, вдали", "быстрый, вчера, вдали", "быстро, вчерашний, вдали", "бег, вчера, далеко"], "answer": 0, "explanation": "«Быстро» отвечает на вопрос как?, «вчера» — когда?, «вдали» — где? Все три слова являются наречиями.", "hint": "Задайте к каждому слову вопросы как? когда? где?"}, {"id": 10, "subject": "Русский язык", "topic": "Синтаксис", "type": "single", "q": "Найдите грамматическую основу: «Утром над рекой поднялся густой туман».", "options": ["утром поднялся", "туман поднялся", "густой туман", "над рекой поднялся"], "answer": 1, "explanation": "Подлежащее — «туман» (что?), сказуемое — «поднялся» (что сделал?). «Густой» — определение, «утром» и «над рекой» — обстоятельства.", "hint": "Найдите, кто/что выполняет действие, и само действие."}, {"id": 11, "subject": "Биология", "topic": "Клетка", "type": "single", "q": "Какая органелла является основным местом синтеза АТФ при клеточном дыхании?", "options": ["Рибосома", "Митохондрия", "Лизосома", "Аппарат Гольджи"], "answer": 1, "explanation": "Митохондрии обеспечивают основные этапы аэробного клеточного дыхания и синтезируют большую часть АТФ в эукариотической клетке.", "hint": "Подумайте, какая органелла известна как «энергетическая станция» клетки."}, {"id": 12, "subject": "Биология", "topic": "Генетика", "type": "single", "q": "Какова вероятность рождения ребёнка с генотипом aa при скрещивании Aa × Aa?", "options": ["0%", "25%", "50%", "75%"], "answer": 1, "explanation": "Гаметы каждого родителя: A и a. Возможные генотипы потомства: AA, Aa, Aa, aa. Один из четырёх — aa, то есть 25%.", "hint": "Составьте решётку Пеннета из четырёх клеток."}, {"id": 13, "subject": "Биология", "topic": "Экология", "type": "single", "q": "Организмы, которые создают органические вещества из неорганических, называются…", "options": ["консументы", "редуценты", "продуценты", "паразиты"], "answer": 2, "explanation": "Продуценты (например, зелёные растения) синтезируют органические вещества из неорганических, обычно используя энергию света.", "hint": "Вспомните роль растений в пищевой цепи."}, {"id": 14, "subject": "Биология", "topic": "Анатомия", "type": "single", "q": "Какой отдел сердца выталкивает кровь в большой круг кровообращения?", "options": ["Правый желудочек", "Левый желудочек", "Правое предсердие", "Левое предсердие"], "answer": 1, "explanation": "Левый желудочек сокращается и направляет насыщенную кислородом кровь в аорту, откуда она поступает в большой круг кровообращения.", "hint": "Большой круг начинается от аорты."}, {"id": 15, "subject": "Биология", "topic": "Эволюция", "type": "single", "q": "Единицей эволюции в современном синтетическом учении считается…", "options": ["особь", "популяция", "вид как отдельная особь", "клетка"], "answer": 1, "explanation": "Эволюционные изменения частот аллелей происходят в генофонде популяции. Поэтому элементарной единицей эволюции является популяция.", "hint": "Изменения накапливаются в группе особей, а не в отдельном организме."}, {"id": 16, "subject": "Химия", "topic": "Количество вещества", "type": "single", "q": "Сколько моль содержится в 36 г воды? M(H₂O)=18 г/моль.", "options": ["1 моль", "2 моль", "3 моль", "0,5 моль"], "answer": 1, "explanation": "Количество вещества n = m/M. n = 36/18 = 2 моль.", "hint": "Используйте формулу n=m/M."}, {"id": 17, "subject": "Химия", "topic": "Реакции", "type": "single", "q": "Какой газ выделяется при взаимодействии цинка с разбавленной соляной кислотой?", "options": ["Кислород", "Азот", "Водород", "Углекислый газ"], "answer": 2, "explanation": "Zn + 2HCl → ZnCl₂ + H₂↑. Выделяется водород.", "hint": "Металл + кислота обычно дают соль и водород (для активных металлов)."}, {"id": 18, "subject": "Химия", "topic": "Периодический закон", "type": "single", "q": "Какой элемент имеет порядковый номер 8?", "options": ["Азот", "Кислород", "Фтор", "Углерод"], "answer": 1, "explanation": "Порядковый номер равен заряду ядра и числу протонов. У кислорода Z=8.", "hint": "Вспомните первые элементы периодической таблицы."}, {"id": 19, "subject": "Химия", "topic": "Растворы", "type": "single", "q": "Массовая доля соли в растворе массой 200 г, содержащем 20 г соли, равна…", "options": ["5%", "10%", "20%", "40%"], "answer": 1, "explanation": "ω = m(вещества)/m(раствора) × 100%. 20/200 × 100% = 10%.", "hint": "Разделите массу растворённого вещества на массу всего раствора."}, {"id": 20, "subject": "Химия", "topic": "Классы веществ", "type": "single", "q": "Какое вещество относится к основаниям?", "options": ["H₂SO₄", "NaOH", "CO₂", "NaCl"], "answer": 1, "explanation": "NaOH — гидроксид натрия, растворимое основание (щёлочь). H₂SO₄ — кислота, CO₂ — кислотный оксид, NaCl — соль.", "hint": "Основания содержат гидроксогруппу OH."}, {"id": 21, "subject": "Математическая грамотность", "topic": "Данные", "type": "single", "q": "Автобус проехал 180 км за 3 часа. Какова его средняя скорость?", "options": ["50 км/ч", "55 км/ч", "60 км/ч", "65 км/ч"], "answer": 2, "explanation": "Средняя скорость v = S/t = 180/3 = 60 км/ч.", "hint": "Скорость равна расстоянию, делённому на время."}, {"id": 22, "subject": "Математическая грамотность", "topic": "Финансы", "type": "single", "q": "Вклад 100 000 тг увеличился на 10%. Какова сумма после увеличения?", "options": ["101 000 тг", "105 000 тг", "110 000 тг", "120 000 тг"], "answer": 2, "explanation": "10% от 100 000 — это 10 000. Новая сумма: 100 000 + 10 000 = 110 000 тг.", "hint": "Найдите 10% исходной суммы и прибавьте к ней."}, {"id": 23, "subject": "Математическая грамотность", "topic": "Логика", "type": "single", "q": "Продолжите ряд: 2, 6, 18, 54, …", "options": ["108", "126", "162", "216"], "answer": 2, "explanation": "Каждый следующий член в 3 раза больше предыдущего: 54×3=162.", "hint": "Проверьте отношение соседних чисел."}, {"id": 24, "subject": "Математическая грамотность", "topic": "Единицы", "type": "single", "q": "Сколько минут составляют 2,5 часа?", "options": ["120", "135", "150", "180"], "answer": 2, "explanation": "1 час = 60 минут. 2,5×60 = 150 минут.", "hint": "Умножьте количество часов на 60."}, {"id": 25, "subject": "Математическая грамотность", "topic": "Таблицы", "type": "single", "q": "В классе 12 девочек и 18 мальчиков. Какой процент класса составляют девочки?", "options": ["30%", "40%", "45%", "60%"], "answer": 1, "explanation": "Всего 12+18=30 учеников. Доля девочек 12/30=0,4=40%.", "hint": "Сначала найдите общее число учеников."}, {"id": 26, "subject": "Грамотность чтения", "topic": "Понимание текста", "type": "single", "q": "Прочитайте: «Городские деревья снижают температуру улиц, задерживают пыль и создают тень. Однако для устойчивого озеленения важны подходящие местные виды и уход». Какова главная мысль?", "options": ["Деревья требуют только полива.", "Озеленение полезно, но нуждается в грамотном подборе и уходе.", "В городах нельзя сажать деревья.", "Все деревья одинаково устойчивы."], "answer": 1, "explanation": "Текст одновременно сообщает о пользе деревьев и подчёркивает условия успешного озеленения: подходящие виды и уход. Это и есть главная мысль.", "hint": "Ищите вариант, который объединяет обе части текста, а не одну деталь."}, {"id": 27, "subject": "Грамотность чтения", "topic": "Вывод", "type": "single", "q": "Текст: «Исследование длилось три года. В школах, где регулярно проводили чтение вслух, ученики стали чаще использовать новые слова в устной речи». Какой вывод наиболее обоснован?", "options": ["Чтение вслух гарантирует отличные оценки по всем предметам.", "Наблюдалась связь между регулярным чтением вслух и более активным использованием новых слов.", "Все ученики одинаково быстро учатся.", "Исследование доказывает, что словари не нужны."], "answer": 1, "explanation": "Из приведённых данных следует связь между практикой чтения вслух и использованием новой лексики. Текст не даёт оснований делать более широкие выводы о всех предметах или каждом ученике.", "hint": "Не добавляйте к тексту сведения, которых в нём нет."}, {"id": 28, "subject": "Грамотность чтения", "topic": "Структура", "type": "single", "q": "Какую функцию чаще всего выполняет заключительное предложение текста, начинающееся словами «Таким образом»?", "options": ["Вводит новую тему", "Подводит итог", "Приводит случайный пример", "Задаёт вопрос"], "answer": 1, "explanation": "Слова «таким образом» обычно сигнализируют вывод или обобщение предыдущей информации.", "hint": "Подумайте о значении вводного сочетания «таким образом»."}, {"id": 29, "subject": "Грамотность чтения", "topic": "Факт и мнение", "type": "single", "q": "Какое предложение является проверяемым фактом?", "options": ["Этот фильм самый интересный.", "Вода кипит примерно при 100 °C при нормальном атмосферном давлении.", "Зима — прекрасное время года.", "Музыка делает жизнь лучше."], "answer": 1, "explanation": "Температура кипения воды при нормальном атмосферном давлении — проверяемое научное утверждение. Остальные предложения выражают субъективные оценки.", "hint": "Факт можно проверить измерением или источником."}, {"id": 30, "subject": "История Казахстана", "topic": "Древность", "type": "single", "q": "Какое государство существовало на территории Казахстана в III веке до н. э. — I веке н. э.?", "options": ["Караханидское государство", "Кангюй", "Казахское ханство", "Ногайская Орда"], "answer": 1, "explanation": "Кангюй — древнее государственное объединение, существовавшее в районе среднего течения Сырдарьи в указанный период.", "hint": "Соотнесите древние государства с эпохой до средневековья."}, {"id": 31, "subject": "История Казахстана", "topic": "Средневековье", "type": "single", "q": "Кто считается основателем Казахского ханства вместе с Жанибеком?", "options": ["Абылай и Кенесары", "Керей и Жанибек", "Тауке и Есим", "Касым и Хакназар"], "answer": 1, "explanation": "Казахское ханство было основано Кереем и Жанибеком во второй половине XV века.", "hint": "Вспомните двух султанов, откочевавших из государства Абулхаира."}, {"id": 32, "subject": "История Казахстана", "topic": "Новое время", "type": "single", "q": "В каком году произошло восстание под руководством Сырыма Датулы?", "options": ["1773–1775", "1783–1797", "1836–1838", "1837–1847"], "answer": 1, "explanation": "Восстание Сырыма Датулы продолжалось в 1783–1797 годах и было направлено против колониальной политики и ханской власти в Младшем жузе.", "hint": "Запомните хронологию восстаний: Сырым Датулы — конец XVIII века."}, {"id": 33, "subject": "История Казахстана", "topic": "XX век", "type": "single", "q": "В каком году была провозглашена независимость Республики Казахстан?", "options": ["1986", "1990", "1991", "1995"], "answer": 2, "explanation": "Закон о государственной независимости Республики Казахстан был принят 16 декабря 1991 года.", "hint": "Это дата государственного праздника — Дня независимости."}, {"id": 34, "subject": "История Казахстана", "topic": "Конституция", "type": "single", "q": "В каком году была принята действующая Конституция Республики Казахстан?", "options": ["1991", "1993", "1995", "1998"], "answer": 2, "explanation": "Конституция Республики Казахстан была принята на республиканском референдуме 30 августа 1995 года.", "hint": "Вспомните День Конституции — 30 августа."}];
-const SUBJECTS = ["Математика","Русский язык","Биология","Химия","Математическая грамотность","Грамотность чтения","История Казахстана"];
-const $=s=>document.querySelector(s), app=$("#app");
-let state={tab:"home",screen:"home",subject:null,mode:"free",exam:false,questions:[],index:0,answers:{},hintCount:0,showHint:false,showExplain:false,started:0,seconds:0,interval:null,history:JSON.parse(localStorage.getItem("vectorHistory")||"[]"),stats:JSON.parse(localStorage.getItem("vectorStats")||'{"answered":0,"correct":0,"hints":0}'),selected:[]};
-const save=()=>{localStorage.setItem("vectorHistory",JSON.stringify(state.history.slice(-100)));localStorage.setItem("vectorStats",JSON.stringify(state.stats));};
-const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const shuffle=a=>[...a].sort(()=>Math.random()-.5);
-function go(tab){state.tab=tab;state.screen=tab;render();document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("active",b.dataset.tab===tab))}
-function render(){if(state.screen==="quiz")return renderQuiz();if(state.screen==="result")return renderResult();if(state.screen==="practice")return renderPractice();if(state.screen==="exam")return renderExam();if(state.screen==="stats")return renderStats();renderHome()}
-function renderHome(){app.innerHTML=`<div class="card"><div class="topline"><span class="pill">ТВОЯ ПОДГОТОВКА К ЕНТ</span><span class="pill">Офлайн после загрузки</span></div><h1>Учись. Решай. Расти.</h1><p class="muted">Тренируй темы, разбирай ошибки и отслеживай прогресс в одном месте.</p><div class="grid"><div><div class="stat">${state.stats.answered}</div><div class="small">ответов дано</div></div><div><div class="stat">${state.stats.correct}</div><div class="small">верных ответов</div></div></div></div>
-<h2>Выбери предмет</h2><div class="grid">${SUBJECTS.map((s,i)=>`<button class="subject" data-sub="${esc(s)}"><span>0${i+1} / ПРЕДМЕТ</span><b>${esc(s)}</b><span>${BANK.filter(q=>q.subject===s).length} заданий в стартовой базе</span></button>`).join("")}</div>
-<div class="card"><h3>Как заниматься?</h3><p class="muted">Выбери предмет и тему, включи или отключи таймер. Подсказки можно открывать сколько угодно раз. После ответа доступен подробный разбор.</p><div class="actions"><button id="homePractice">Начать тренировку</button><button class="secondary" id="homeExam">Пробный тест</button></div></div>`;
-app.querySelectorAll("[data-sub]").forEach(b=>b.onclick=()=>{state.subject=b.dataset.sub;state.screen="practice";render()});$("#homePractice").onclick=()=>go("practice");$("#homeExam").onclick=()=>go("exam")}
-function renderPractice(){app.innerHTML=`<h1>Тренировка</h1><p class="muted">Выбери предмет, тему и режим.</p><div class="card"><label>Предмет</label><select id="sub">${SUBJECTS.map(s=>`<option ${state.subject===s?"selected":""}>${esc(s)}</option>`).join("")}</select><label>Тема</label><select id="topic"></select><label>Режим</label><select id="mode"><option value="free">Без таймера — учусь спокойно</option><option value="timed">С таймером — 1 минута на вопрос</option></select><div class="actions"><button id="startPractice">Начать</button></div></div><div class="card"><h3>Что будет внутри</h3><p class="muted">Подсказка → самостоятельный ответ → проверка → подробное объяснение → следующий вопрос. Ошибки сохраняются в истории.</p></div>`;
-const sub=$("#sub"),topic=$("#topic");function fill(){let topics=[...new Set(BANK.filter(q=>q.subject===sub.value).map(q=>q.topic))];topic.innerHTML='<option value="all">Все темы</option>'+topics.map(t=>`<option>${esc(t)}</option>`).join("")}sub.onchange=fill;fill();$("#startPractice").onclick=()=>startQuiz(BANK.filter(q=>q.subject===sub.value&&(topic.value==="all"||q.topic===topic.value)),$("#mode").value,false)}
-function renderExam(){app.innerHTML=`<h1>Пробный ЕНТ</h1><div class="card"><h3>Экзаменационный режим</h3><p class="muted">Полный тренировочный формат: 120 вопросов и 240 минут. В этой версии банк демонстрационный и содержит ограниченное число авторских заданий; повторения возможны. Для полноценной подготовки базу нужно расширять.</p><label>Режим времени</label><select id="examMode"><option value="timed">С таймером — 240 минут</option><option value="free">Без таймера</option></select><div class="actions"><button id="startExam">Начать пробник</button></div></div><div class="card"><h3>Важно</h3><p class="muted">Это тренировочный пробник, а не официальный экзаменационный интерфейс НЦТ. Распределение и оценивание могут отличаться от актуальной спецификации ЕНТ.</p></div>`;$("#startExam").onclick=()=>{let pool=shuffle(BANK);let qs=[];while(qs.length<120)qs.push(...shuffle(pool));startQuiz(qs.slice(0,120),$("#examMode").value,true)}}
-function startQuiz(qs,mode,exam){if(!qs.length){alert("Для этой темы пока нет заданий.");return}state.questions=qs.map((q,i)=>({...q,runId:`${q.id}-${i}-${Date.now()}`}));state.index=0;state.answers={};state.mode=mode;state.exam=exam;state.started=Date.now();state.seconds=mode==="timed"?(exam?14400:qs.length*60):0;state.showHint=false;state.showExplain=false;state.screen="quiz";if(state.interval)clearInterval(state.interval);if(mode==="timed")state.interval=setInterval(()=>{state.seconds--;if(state.seconds<=0){clearInterval(state.interval);finishQuiz()}else{let t=$("#timer");if(t)t.textContent=fmt(state.seconds)}},1000);render()}
-function fmt(n){return Math.floor(n/60)+":"+String(n%60).padStart(2,"0")}
-function renderQuiz(){let q=state.questions[state.index],picked=state.answers[q.runId],answered=picked!==undefined;let opts=q.options.map((o,i)=>`<button class="option ${picked===i?(i===q.answer?"correct":"wrong"):""}" data-opt="${i}" ${answered?"disabled":""}><b>${"АБВГДЕ"[i]}.</b><span>${esc(o)}</span></button>`).join("");
-app.innerHTML=`<div class="topline"><span class="pill">${state.exam?"ПРОБНЫЙ ЕНТ":esc(q.subject)}</span><span class="timer" id="timer">${state.mode==="timed"?fmt(state.seconds):"БЕЗ ВРЕМЕНИ"}</span></div><div class="progress"><i style="width:${(state.index+1)/state.questions.length*100}%"></i></div><div class="topline small"><span>Вопрос ${state.index+1} из ${state.questions.length}</span><span>${esc(q.topic)}</span></div><div class="card"><h2>${esc(q.q)}</h2>${opts}<div class="actions"><button class="secondary" id="hint">💡 Подсказка без ограничений</button>${answered?'<button id="explain">Разобрать ответ</button>':""}</div>${state.showHint?`<div class="notice"><b>Подсказка</b><div class="explain">${esc(q.hint)}</div><p class="small">Подсказки не ограничены — можешь открывать снова и снова.</p></div>`:""}${state.showExplain?`<div class="notice"><b>${picked===q.answer?"Верно!":"Разберём ошибку"}</b><div class="explain">${esc(q.explanation)}</div></div>`:""}</div><div class="actions"><button class="ghost" id="exit">Выйти</button><button id="next" ${!answered?"disabled":""}>${state.index===state.questions.length-1?"Завершить":"Следующий вопрос →"}</button></div>`;
-$("#hint").onclick=()=>{state.showHint=true;state.stats.hints++;save();renderQuiz()};if(answered)$("#explain").onclick=()=>{state.showExplain=true;renderQuiz()};app.querySelectorAll("[data-opt]").forEach(b=>b.onclick=()=>{let val=+b.dataset.opt;state.answers[q.runId]=val;state.stats.answered++;if(val===q.answer)state.stats.correct++;state.history.push({subject:q.subject,topic:q.topic,q:q.q,chosen:q.options[val],correct:q.options[q.answer],ok:val===q.answer,date:new Date().toLocaleString("ru-RU"),explanation:q.explanation});save();renderQuiz()});$("#next").onclick=()=>{if(state.index<state.questions.length-1){state.index++;state.showHint=false;state.showExplain=false;renderQuiz()}else finishQuiz()};$("#exit").onclick=()=>{if(confirm("Завершить текущую тренировку?"))finishQuiz()}}
-function finishQuiz(){if(state.interval)clearInterval(state.interval);state.interval=null;state.screen="result";render()}
-function renderResult(){let total=Object.keys(state.answers).length,correct=state.questions.filter(q=>state.answers[q.runId]===q.answer).length;app.innerHTML=`<div class="card"><span class="pill">РЕЗУЛЬТАТ</span><h1>${correct===total?"Отличная работа!":"Тренировка завершена"}</h1><div class="big">${correct} / ${total}</div><p class="muted">Правильных ответов: ${total?Math.round(correct/total*100):0}%</p><div class="progress"><i style="width:${total?correct/total*100:0}%"></i></div><p>Подсказок использовано: ${state.stats.hints}</p><div class="actions"><button id="again">Ещё раз</button><button class="secondary" id="home">На главную</button></div></div><div class="card"><h3>Что повторить</h3>${state.questions.filter(q=>state.answers[q.runId]!==q.answer).map(q=>`<p>• ${esc(q.subject)} — ${esc(q.topic)}: ${esc(q.q)}</p>`).join("")||"<p class='muted'>Ошибок нет — так держать!</p>"}</div>`;$("#again").onclick=()=>startQuiz(state.questions,state.mode,state.exam);$("#home").onclick=()=>go("home")}
-function renderStats(){let s=state.stats,rate=s.answered?Math.round(s.correct/s.answered*100):0,wrong=state.history.filter(h=>!h.ok);app.innerHTML=`<h1>Мой прогресс</h1><div class="grid"><div class="card"><div class="stat">${s.answered}</div><div class="small">всего ответов</div></div><div class="card"><div class="stat">${rate}%</div><div class="small">точность</div></div><div class="card"><div class="stat">${s.hints}</div><div class="small">подсказок</div></div></div><div class="card"><h3>История ошибок</h3>${wrong.length?wrong.slice(-20).reverse().map(h=>`<div class="notice"><b>${esc(h.subject)} · ${esc(h.topic)}</b><p>${esc(h.q)}</p><p class="small">Твой ответ: ${esc(h.chosen)} · Верно: ${esc(h.correct)}</p><div class="explain">${esc(h.explanation)}</div></div>`).join(""):"<p class='muted'>Пока ошибок нет. Реши несколько заданий — история появится здесь.</p>"}</div><div class="actions"><button class="secondary" id="reset">Сбросить прогресс</button></div>`;$("#reset").onclick=()=>{if(confirm("Удалить всю историю и статистику на этом устройстве?")){state.history=[];state.stats={answered:0,correct:0,hints:0};save();renderStats()}}}
-document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>go(b.dataset.tab));
-if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
-render();
+/*
+  ВЕКТОР — ЕНТ-2026
+  Обновлённая система подготовки по 5 предметам (ХимБио + Базовые)
+*/
+
+const questionsBank = {
+    biology: [
+        {
+            id: "bio_001",
+            topic: "Цитология и молекулярная биология",
+            question: "Какая органелла эукариотической клетки отвечает за окислительное фосфорилирование и синтез основного объема АТФ?",
+            options: ["Комплекс Гольджи", "Митохондрия", "Лизосома", "Рибосома"],
+            correctAnswer: 1,
+            explanation: `<b>Правильный ответ: Митохондрия.</b><br><br>
+<b>Подробный разбор по спецификации ЕНТ:</b><br>
+• <b>Митохондрия</b> — двухмембранный органоид, выполняющий роль «энергетической станции» клетки. На кристах внутренней мембраны расположен фермент АТФ-синтаза, обеспечивающий синтез АТФ в процессе дыхания (окислительное фосфорилирование).<br>
+• <b>Комплекс Гольджи</b> — одномембранная система, выполняющая функции модификации, сортировки и упаковки белков и липидов.<br>
+• <b>Лизосома</b> — органоид с гидролитическими ферментами для расщепления биополимеров.<br>
+• <b>Рибосома</b> — немембранный комплекс из рРНК и белков, осуществляющий трансляцию (синтез белка).`
+        },
+        {
+            id: "bio_002",
+            topic: "Деление клеток (Митоз и Мейоз)",
+            question: "В какой фазе митоза сестринские хроматиды расхождение к противоположным полюсам клетки?",
+            options: ["Профаза", "Метафаза", "Анафаза", "Телофаза"],
+            correctAnswer: 2,
+            explanation: `<b>Правильный ответ: Анафаза.</b><br><br>
+<b>Подробный разбор по фазам митоза:</b><br>
+• <b>Анафаза:</b> Нити веретена деления укорачиваются, разделяя центромеры. Сестринские хроматиды становятся самостоятельными хромосомами и расходятся к полюсам.<br>
+• <b>Профаза:</b> Конденсация хроматина, растворение ядерной оболочки.<br>
+• <b>Метафаза:</b> Выстраивание хромосом по экватору клетки («метафазная пластинка»).<br>
+• <b>Телофаза:</b> Деспирализация хромосом, формирование ядерных оболочек и цитокинез.`
+        },
+        {
+            id: "bio_003",
+            topic: "Генетика и Селекция",
+            question: "При моногибридном скрещивании двух гетерозигот (Aa x Aa) при полном доминировании расщепление по фенотипу во втором поколении (F2) составляет:",
+            options: ["1:1", "3:1", "1:2:1", "9:3:3:1"],
+            correctAnswer: 1,
+            explanation: `<b>Правильный ответ: 3:1.</b><br><br>
+<b>Подробный разбор (Второй закон Менделя):</b><br>
+• При скрещивании двух гетерозигот (Aa × Aa) генотипы потомства: 1 AA : 2 Aa : 1 aa.<br>
+• <b>Расщепление по генотипу:</b> 1:2:1.<br>
+• <b>Расщепление по фенотипу:</b> 3 части с доминантным признаком (AA и Aa) к 1 части с рецессивным (aa), т.е. <b>3:1</b>.`
+        },
+        {
+            id: "bio_004",
+            topic: "Анатомия и Физиология человека",
+            question: "Какая отдельная камера сердца человека выталкивает артериальную кровь в аорту по большому кругу кровообращения?",
+            options: ["Правое предсердие", "Правый желудочек", "Левое предсердие", "Левый желудочек"],
+            correctAnswer: 3,
+            explanation: `<b>Правильный ответ: Левый желудочек.</b><br><br>
+<b>Подробный разбор физиологии кровообращения:</b><br>
+• <b>Левый желудочек</b> обладает самой толстой мышечной стенкой (миокардом) и нагнетает оксигенированную (артериальную) кровь в аорту для снабжения всех органов.<br>
+• <b>Правый желудочек</b> выталкивает венозную кровь в легочный ствол (малый круг).<br>
+• <b>Правое предсердие</b> принимает венозную кровь из полых вен.`
+        }
+    ],
+    chemistry: [
+        {
+            id: "chem_001",
+            topic: "Общая химия и Стехиометрия",
+            question: "Какой объем (при н.у.) занимает 0,5 моль углекислого газа (CO₂)?",
+            options: ["5,6 л", "11,2 л", "22,4 л", "44,8 л"],
+            correctAnswer: 1,
+            explanation: `<b>Правильный ответ: 11,2 л.</b><br><br>
+<b>Формула и пошаговый расчет:</b><br>
+V = n × Vₘ<br>
+• n (количество вещества) = 0,5 моль<br>
+• Vₘ (молярный объем идеального газа при н.у.) = 22,4 л/моль<br>
+• V = 0,5 моль × 22,4 л/моль = <b>11,2 л</b>.`
+        },
+        {
+            id: "chem_002",
+            topic: "Строение атома и Периодический закон",
+            question: "Какая электронная конфигурация соответствует атому фосфора (P, атомный номер 15) в основном состоянии?",
+            options: ["1s² 2s² 2p⁶ 3s² 3p¹", "1s² 2s² 2p⁶ 3s² 3p³", "1s² 2s² 2p⁶ 3s¹ 3p⁴", "1s² 2s² 2p⁶ 3s² 3p⁴"],
+            correctAnswer: 1,
+            explanation: `<b>Правильный ответ: 1s² 2s² 2p⁶ 3s² 3p³.</b><br><br>
+<b>Подробный разбор:</b><br>
+• Порядковый номер фосфора — 15, следовательно, у него 15 электронов.<br>
+• Распределение по энергетическим уровням:<br>
+  1-й уровень: 1s² (2 э-)<br>
+  2-й уровень: 2s² 2p⁶ (8 э-)<br>
+  3-й внешний уровень: 3s² 3p³ (5 valence e-).<br>
+• Сумма электронов: 2 + 2 + 6 + 2 + 3 = 15.`
+        },
+        {
+            id: "chem_003",
+            topic: "Органическая химия (Углеводороды)",
+            question: "Какое соединение образуется при гидратации этилена (C₂H₄) в присутствии кислотного катализатора?",
+            options: ["Этаналь", "Этанол", "Диэтиловый эфир", "Уксусная кислота"],
+            correctAnswer: 1,
+            explanation: `<b>Правильный ответ: Этанол.</b><br><br>
+<b>Подробный разбор реакции:</b><br>
+• Реакция гидратации (присоединения воды) алкенов проходит по двойной связи:<br>
+  CH₂=CH₂ + H₂O ⎯(H⁺, t°)→ CH₃-CH₂-OH (этанол).<br>
+• Это ключевой промышленный метод получения одноатомного спирта (этанола).`
+        },
+        {
+            id: "chem_004",
+            topic: "Растворы и Электролитическая диссоциация",
+            question: "Чему равна массовая доля растворенного вещества, если в 180 г воды растворили 20 г поваренной соли (NaCl)?",
+            options: ["10%", "11,1%", "20%", "25%"],
+            correctAnswer: 0,
+            explanation: `<b>Правильный ответ: 10%.</b><br><br>
+<b>Расчет и формула:</b><br>
+• Масса раствора (m_раствора) = m_вещества + m_воды = 20 г + 180 г = 200 г.<br>
+• Массовая доля ω = (m_вещества / m_раствора) × 100%<br>
+• ω = (20 г / 200 г) × 100% = <b>10%</b>.`
+        }
+    ],
+    history_kz: [
+        {
+            id: "hist_001",
+            topic: "Казахстан в XIX веке",
+            question: "В каких годах проходило самое крупное национально-освободительное движение под руководством Кенесары Касымова?",
+            options: ["1783–1797 гг.", "1836–1838 гг.", "1837–1847 гг.", "1916 г."],
+            correctAnswer: 2,
+            explanation: `<b>Правильный ответ: 1837–1847 гг.</b><br><br>
+<b>Историческая справка для ЕНТ:</b><br>
+• <b>1837–1847 гг.</b> — восстание под предводительством Кенесары Касымова охватило все три жуза и было направлено против колониальной политики Российской империи.<br>
+• <i>1783–1797 гг.</i> — восстание Сырыма Датулы в Младшем жузе.<br>
+• <i>1836–1838 гг.</i> — восстание Исатая Тайманова и Махамбета Утемисова в Букеевской Орде.<br>
+• <i>1916 г.</i> — общенациональное национально-освободительное восстание.`
+        },
+        {
+            id: "hist_002",
+            topic: "Древние племенные союзы",
+            question: "Какой древний племенной союз на территории Казахстана делился на хаомаварга, тиграхауда и парадрайя?",
+            options: ["Усуни", "Канглы", "Саки", "Гунны"],
+            correctAnswer: 2,
+            explanation: `<b>Правильный ответ: Саки.</b><br><br>
+<b>Разбор по античным источникам:</b><br>
+• <b>Саки-тиграхауда</b> — носящие остроконечные шапки (район Жетысу и Тянь-Шаня).<br>
+• <b>Саки-хаомаварга</b> — изготовляющие напиток хаома (в долине Мургаба).<br>
+• <b>Саки-парадрайя</b> — заморские саки (Приаралье и Причерноморье).`
+        }
+    ],
+    math_lit: [
+        {
+            id: "ml_001",
+            topic: "Закономерности и текстовые задачи",
+            question: "В классе 30 учеников. 18 из них посещают секцию футбола, 16 — секцию баскетбола, а 6 учеников не посещают ни одну из секций. Сколько учеников посещают обе секции?",
+            options: ["8", "10", "12", "14"],
+            correctAnswer: 1,
+            explanation: `<b>Правильный ответ: 10.</b><br><br>
+<b>Решение через круги Эйлера:</b><br>
+• Общее число учеников в секциях = 30 - 6 = 24 ученика.<br>
+• Сумма участников футбола и баскетбола = 18 + 16 = 34.<br>
+• Пересечение (посещают обе секции) = 34 - 24 = <b>10 учеников</b>.`
+        }
+    ],
+    reading_lit: [
+        {
+            id: "rl_001",
+            topic: "Анализ и интерпретация текста",
+            question: "Определите основную мысль текста: 'Наука без морали опасна, а мораль без науки бессильна. Лишь их союз дает устойчивый прогресс.'",
+            options: [
+                "Наука важней моральных норм.",
+                "Мораль не требует научных знаний.",
+                "Гармоничное сочетание науки и морали — основа развития.",
+                "Прогресс возможен без участия науки."
+            ],
+            correctAnswer: 2,
+            explanation: `<b>Правильный ответ: Гармоничное сочетание науки и морали — основа развития.</b><br><br>
+<b>Анализ смысловых связей:</b><br>
+Автор указывает на недостатки науки без морали и морали без науки, делая вывод, что именно их <i>союз</i> приводит к устойчивому прогрессу.`
+        }
+    ]
+};
+
+let currentSubject = 'biology';
+let currentQuestionIndex = 0;
+let userAnswers = {};
+
+document.addEventListener('DOMContentLoaded', () => {
+    initApp();
+});
+
+function initApp() {
+    setupSubjectButtons();
+    loadQuestion(currentSubject, currentQuestionIndex);
+}
+
+function setupSubjectButtons() {
+    const buttons = document.querySelectorAll('.subject-btn');
+    buttons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            buttons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentSubject = btn.dataset.subject;
+            currentQuestionIndex = 0;
+            loadQuestion(currentSubject, currentQuestionIndex);
+        });
+    });
+}
+
+function loadQuestion(subject, index) {
+    const list = questionsBank[subject];
+    const container = document.getElementById('quiz-container');
+    
+    if (!list || list.length === 0) {
+        container.innerHTML = '<div class="card p-4 text-center">Вопросы по данному предмету обновляются.</div>';
+        return;
+    }
+
+    const q = list[index];
+    const userSelected = userAnswers[`${subject}_${index}`];
+
+    let optionsHtml = '';
+    q.options.forEach((opt, idx) => {
+        let btnClass = 'option-btn';
+        if (userSelected !== undefined) {
+            if (idx === q.correctAnswer) btnClass += ' correct';
+            else if (idx === userSelected) btnClass += ' incorrect';
+        }
+        optionsHtml += `<button class="${btnClass}" onclick="selectOption(${idx})" ${userSelected !== undefined ? 'disabled' : ''}>${opt}</button>`;
+    });
+
+    let explanationHtml = '';
+    if (userSelected !== undefined) {
+        explanationHtml = `
+            <div class="explanation-box mt-3 p-3 rounded">
+                <h5>Разбор ответа:</h5>
+                <p>${q.explanation}</p>
+            </div>
+        `;
+    }
+
+    container.innerHTML = `
+        <div class="card p-4 shadow-sm">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="badge bg-primary">${q.topic}</span>
+                <span class="text-muted">Вопрос ${index + 1} из ${list.length}</span>
+            </div>
+            <h4 class="mb-4">${q.question}</h4>
+            <div class="options-grid d-grid gap-2">
+                ${optionsHtml}
+            </div>
+            ${explanationHtml}
+            <div class="d-flex justify-content-between mt-4">
+                <button class="btn btn-outline-secondary" onclick="prevQuestion()" ${index === 0 ? 'disabled' : ''}>← Назад</button>
+                <button class="btn btn-primary" onclick="nextQuestion()" ${index === list.length - 1 ? 'disabled' : ''}>Далее →</button>
+            </div>
+        </div>
+    `;
+}
+
+function selectOption(optIndex) {
+    const key = `${currentSubject}_${currentQuestionIndex}`;
+    userAnswers[key] = optIndex;
+    loadQuestion(currentSubject, currentQuestionIndex);
+}
+
+function nextQuestion() {
+    if (currentQuestionIndex < questionsBank[currentSubject].length - 1) {
+        currentQuestionIndex++;
+        loadQuestion(currentSubject, currentQuestionIndex);
+    }
+}
+
+function prevQuestion() {
+    if (currentQuestionIndex > 0) {
+        currentQuestionIndex--;
+        loadQuestion(currentSubject, currentQuestionIndex);
+    }
+}
