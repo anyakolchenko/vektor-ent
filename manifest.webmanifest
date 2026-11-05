@@ -1,15 +1,10 @@
 {
-  "name": "Вектор ЕНТ",
-  "short_name": "Вектор",
-  "start_url": "./index.html",
-  "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#0d6efd",
-  "icons": [
-    {
-      "src": "icon.svg",
-      "sizes": "192x192 512x512",
-      "type": "image/svg+xml"
-    }
-  ]
+  "name":"Вектор — ЕНТ 2026",
+  "short_name":"Вектор",
+  "lang":"ru",
+  "start_url":"./",
+  "display":"standalone",
+  "background_color":"#0b1220",
+  "theme_color":"#101827",
+  "icons":[{"src":"icon.svg","sizes":"any","type":"image/svg+xml"}]
 }
